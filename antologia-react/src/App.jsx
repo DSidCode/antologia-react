@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './assets/css/style.css';
 
 // 1. Importamos nuestro nuevo componente Book.
@@ -18,7 +18,10 @@ function App() {
     setIsBookOpen(false);
   };
 
-  document.body.classList.toggle('book-is-open', isBookOpen);
+  // Usamos useEffect para manipular el DOM de forma segura solo en el navegador.
+  useEffect(() => {
+    document.body.classList.toggle('book-is-open', isBookOpen);
+  }, [isBookOpen]); // Este efecto se ejecutará cada vez que `isBookOpen` cambie.
 
   return (
     <>
