@@ -23,6 +23,7 @@ Este documento registra todos los cambios significativos realizados en el proyec
 ### `Fixed`
 - **Layout de Páginas**: Se solucionó el problema que causaba que todas las páginas se renderizaran apiladas. Ahora se muestran correctamente una a la vez, ocupando el espacio designado.
 - **Layout de Portada**: Se corrigió una regresión que había roto el diseño de la portada, asegurando que se muestre correctamente centrada y a pantalla completa.
+- **Error de Despliegue en Netlify**: Se solucionó un error de build (`ENOENT: no such file or directory`) al configurar el `base directory` en Netlify para que apunte al subdirectorio `antologia-react`, donde reside el proyecto.
 
 ---
 
