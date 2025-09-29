@@ -4,6 +4,46 @@ Este documento registra todos los cambios significativos realizados en el proyec
 
 ---
 
+## [v2.2.0] - Refinamiento de UI y Funcionalidad de Lectura
+
+### `Added`
+- **Navegación Completa**: Se implementó la funcionalidad de los botones "Anterior" y "Siguiente" para una navegación fluida entre poemas.
+- **Navegación por Teclado**: Se recuperó la funcionalidad de la versión original para pasar las páginas usando las flechas izquierda y derecha del teclado.
+- **Menús de Navegación Completos**: Se restauraron todos los enlaces del menú original (Portada, Índice, Autobiografía, etc.) en la cabecera y pie de página del libro.
+
+### `Changed`
+- **Diseño del Índice**: Se rediseñó completamente la página del índice para un aspecto más profesional y moderno, utilizando una tipografía de floritura para el título y numeración automática para la lista de poemas.
+- **Formato de Poemas**: Se refactorizó la estructura de datos de los poemas para respetar los saltos de línea y estrofas, mejorando drásticamente la presentación y legibilidad del texto.
+- **Contenido Actualizado**: Se reemplazó todo el contenido de marcador de posición con los textos originales de la antología.
+- **Diseño de Portada**:
+    - Se añadió un crédito de autor en la parte inferior, con un enlace estilizado con un efecto neón cyberpunk.
+    - Se implementó un fondo con una textura personalizada y una capa oscura semitransparente para un efecto visual más rico.
+- **Paginador Responsivo**: Se rediseñó el paginador para pantallas móviles, simplificándolo a botones de flecha minimalistas y un contador de página con una fuente caligráfica.
+
+### `Fixed`
+- **Layout de Páginas**: Se solucionó el problema que causaba que todas las páginas se renderizaran apiladas. Ahora se muestran correctamente una a la vez, ocupando el espacio designado.
+- **Layout de Portada**: Se corrigió una regresión que había roto el diseño de la portada, asegurando que se muestre correctamente centrada y a pantalla completa.
+
+---
+
+## [v2.1.0] - Implementación del Libro Interactivo y Correcciones de Layout
+
+### `Added`
+- **Navegación por Páginas**: Se implementó la lógica de estado en React (`useState`) para gestionar la página activa, permitiendo al usuario navegar entre el índice y los diferentes poemas.
+- **Componente de Página**: Se creó el componente `Page.jsx` para renderizar el contenido de cada poema de forma individual.
+- **Interactividad del Índice**: El componente `Index.jsx` ahora es interactivo; al hacer clic en un título, se actualiza el estado de la aplicación para mostrar el poema correspondiente.
+- **Externalización de Datos**: Los datos de los poemas se movieron a un archivo dedicado (`poems.js`) para mejorar la organización y facilitar futuras actualizaciones.
+
+### `Fixed`
+- **Error Crítico de Visualización**: Se solucionó un problema persistente de layout que causaba que el contenido del libro se viera "apretado" o desbordado. La causa era un conflicto entre `display: grid` y el centrado de los elementos hijos.
+- **Corrección de Columnas**: Se eliminó la propiedad `columns: 2` del CSS del índice, que dividía la lista en dos columnas estrechas y rompía el diseño de "página única".
+- **Conflicto de CSS**: Se resolvieron conflictos entre los estilos por defecto de Vite (`index.css`) y los estilos personalizados del proyecto (`style.css`), unificando el control del layout.
+
+### `Changed`
+- **Refactorización del Layout Principal**: Se refactorizó el CSS para que el layout del libro funcione correctamente dentro de la estructura de React. Se adoptó un enfoque de `flexbox` en el contenedor `#root` para asegurar que el contenido del libro se expanda verticalmente de forma correcta.
+
+---
+
 ## [v2.0.0] - Inicio de la Migración a React
 
 ### `Added`

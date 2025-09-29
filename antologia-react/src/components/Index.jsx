@@ -14,7 +14,11 @@ function Index({ isActive, onNavigate }) {
     <div className={className}>
       <div className="indice-intro">
         <h2>Índice</h2>
-        <p>Una colección de poemas sobre el amor, la tecnología y la melancolía que habita entre líneas de código.</p>
+        <p>
+          Aquí comienza el susurro de los versos que habitan en estas páginas.
+          <br />
+          Clic en el título para empezar a leer.
+        </p>
       </div>
 
       <ul className="indice-list">

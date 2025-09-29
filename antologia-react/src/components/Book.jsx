@@ -1,24 +1,62 @@
+import { useEffect, useCallback } from 'react';
 import Index from './Index.jsx';
 import Page from './Page.jsx';
 import { poems } from './poems.js';
 
 function Book({ onCloseBook, currentPage, setCurrentPage }) {
+  const poemIds = poems.map(p => p.id);
+  const totalPages = poems.length;
+
+  // Usamos useCallback para memorizar las funciones y evitar que el useEffect se ejecute innecesariamente.
+  const handlePrevious = useCallback(() => {
+    const currentIndex = poemIds.indexOf(currentPage);
+    const newPageId = currentIndex > 0 ? poemIds[currentIndex - 1] : 'index'; // Vuelve al índice desde el primer poema
+    setCurrentPage(newPageId);
+  }, [currentPage, poemIds, setCurrentPage]);
+
+  const handleNext = useCallback(() => {
+    const currentIndex = poemIds.indexOf(currentPage);
+    if (currentIndex < totalPages - 1) {
+      setCurrentPage(poemIds[currentIndex + 1]);
+    }
+  }, [currentPage, poemIds, totalPages, setCurrentPage]);
+
   const handleNavigate = (pageId) => {
     setCurrentPage(pageId);
   };
 
-  const handleHeaderLinkClick = (e) => {
+  const handleLinkClick = (e, pageId) => {
     e.preventDefault();
-    handleNavigate('index');
+    handleNavigate(pageId);
   };
+
+  // Hook para manejar la navegación con el teclado.
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        handleNext();
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevious();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Función de limpieza: se ejecuta cuando el componente se desmonta.
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleNext, handlePrevious]); // El efecto depende de estas funciones.
 
   return (
     <>
       {/* Cabecera de navegación del libro */}
       <header className="book-header">
-        <a href="#indice" className="nav-pill" onClick={handleHeaderLinkClick}>Índice</a>
-        <a href="/index.html" className="nav-pill portfolio-link">Portafolio</a>
-        <button onClick={onCloseBook} className="nav-pill">Cerrar Libro</button>
+        <button onClick={onCloseBook} className="nav-pill">Portada</button>
+        <a href="#indice" className="nav-pill" onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
+        <a href="#bio" className="nav-pill" onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
+        <a href="#apoyo" className="nav-pill" onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
+        <a href="#escribeme" className="nav-pill" onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
       </header>
 
       {/* Contenido principal del libro. Este es el contenedor relativo. */}
@@ -30,20 +68,32 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
         />
 
         {/* Renderizamos una página para cada poema */}
-        {poems.map((poem) => (
-          <Page
-            key={poem.id}
-            isActive={currentPage === poem.id}
-            title={poem.title}
-            content={poem.content}
-          />
-        ))}
+        {poems.map((poem, index) => { // poems ahora incluye las nuevas secciones
+          const isLastPoem = index === totalPages - 1;
+          return (
+            <Page
+              key={poem.id}
+              isActive={currentPage === poem.id}
+              title={poem.title}
+              content={poem.content}
+              pageNumber={index + 1}
+              totalPages={totalPages}
+              onNavigatePrevious={handlePrevious}
+              onNavigateNext={!isLastPoem ? handleNext : null}
+              isFirstPoem={index === 0}
+            />
+          );
+        })}
       </div>
 
       {/* Pie de página con la paginación */}
       <footer className="book-footer">
-        <button className="nav-pill">Anterior</button>
-        <button className="nav-pill">Siguiente</button>
+        <button onClick={onCloseBook} className="nav-pill">Portada</button>
+        <a href="#indice" className="nav-pill" onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
+        <a href="#bio" className="nav-pill" onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
+        <a href="#apoyo" className="nav-pill" onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
+        <a href="#escribeme" className="nav-pill" onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
+        <a href="/index.html" className="nav-pill portfolio-link">← Portafolio</a>
       </footer>
     </>
   );

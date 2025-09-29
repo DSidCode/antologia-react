@@ -37,8 +37,10 @@ function App() {
             <h2>Del Amor Y Otras Nostalgias</h2>
             <p className="quote">"Escribo para no perderme en los laberintos de mi propia mente."</p>
             <button onClick={handleOpenBook} className="cta-button">Leer Antología</button>
-            <a href="/index.html" className="back-to-portfolio">Volver al Portafolio</a>
           </div>
+          <p className="author-credit">
+            Autor: Daniel H. García Alzate | <a href="https://danisid.com" target="_blank" rel="noopener noreferrer" className="neon-link">DaniSid.com</a>
+          </p>
         </header>
       )}
     </>
