@@ -1,0 +1,12 @@
+# Configuración de Build para Netlify
+[build]
+  # Comando para construir el proyecto Vite
+  command = "npm run build"
+  # Directorio donde se guardan los archivos finales
+  publish = "dist"
+
+# Regla de redirección para Single Page Applications (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
