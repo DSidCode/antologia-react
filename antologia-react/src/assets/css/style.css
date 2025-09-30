@@ -577,14 +577,21 @@ header p {
 }
 
 /* Ahora estilizamos la imagen (IMG) dentro del botón */
-.icon-btn img {
-    width: 24px;  /* Tamaño explícito para SVG */
-    height: 24px; /* Tamaño explícito para SVG */
+/* Estilos para los iconos (sean IMG o I) dentro del botón */
+.icon-btn img,
+.icon-btn i {
+    /* Para los SVG */
+    width: 24px;
+    height: 24px;
+    /* Para los iconos de fuente */
+    font-size: 24px;
+    line-height: 1;
     /* Aplicamos la transición a las propiedades que van a cambiar */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.icon-btn:hover img {
+.icon-btn:hover img,
+.icon-btn:hover i {
     /* Efecto de levitación general para todos los botones */
     transform: scale(1.1) translateY(-2px);
 }
@@ -597,6 +604,17 @@ header p {
     filter: drop-shadow(0 0 8px white);
 }
 .nequi-icon:hover img {
+    filter: drop-shadow(0 0 8px white);
+}
+
+/* Efecto de brillo para los nuevos iconos de contacto */
+.whatsapp-icon:hover i {
+    filter: drop-shadow(0 0 8px white);
+}
+.ig-icon:hover i {
+    filter: drop-shadow(0 0 8px white);
+}
+.email-icon:hover i {
     filter: drop-shadow(0 0 8px white);
 }
 
