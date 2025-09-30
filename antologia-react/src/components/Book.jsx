@@ -4,6 +4,7 @@ import Page from './Page.jsx';
 import { poems } from './poems.js';
 import DonationButtons from './DonationButtons.jsx';
 import ContactButtons from './ContactButtons.jsx';
+import AuthorLink from './AuthorLink.jsx';
 
 function Book({ onCloseBook, currentPage, setCurrentPage }) {
   const poemIds = poems.map(p => p.id);
@@ -54,11 +55,11 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
     <>
       {/* Cabecera de navegación del libro */}
       <header className="book-header">
-        <button onClick={onCloseBook} className="nav-pill">Portada</button>
-        <a href="#indice" className="nav-pill" onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
-        <a href="#bio" className="nav-pill" onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
-        <a href="#apoyo" className="nav-pill" onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
-        <a href="#escribeme" className="nav-pill" onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
+        <button onClick={onCloseBook} className="nav-pill">Portada</button> {/* Este botón cierra el libro, no tiene estado activo */}
+        <a href="#indice" className={`nav-pill ${currentPage === 'index' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
+        <a href="#bio" className={`nav-pill ${currentPage === 'bio' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
+        <a href="#apoyo" className={`nav-pill ${currentPage === 'apoyo' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
+        <a href="#escribeme" className={`nav-pill ${currentPage === 'escribeme' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
       </header>
 
       {/* Contenido principal del libro. Este es el contenedor relativo. */}
@@ -77,6 +78,8 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
             specialContentComponent = <DonationButtons />;
           } else if (poem.specialContent === 'contactButtons') {
             specialContentComponent = <ContactButtons />;
+          } else if (poem.specialContent === 'authorLink') {
+            specialContentComponent = <AuthorLink />;
           }
           return (
             <Page
@@ -84,6 +87,7 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
               isActive={currentPage === poem.id}
               title={poem.title}
               content={poem.content}
+              pageClass={poem.id === 'bio' ? 'page--bio' : ''}
               pageNumber={index + 1}
               totalPages={totalPages}
               onNavigatePrevious={handlePrevious}
@@ -97,12 +101,11 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
 
       {/* Pie de página con la paginación */}
       <footer className="book-footer">
-        <button onClick={onCloseBook} className="nav-pill">Portada</button>
-        <a href="#indice" className="nav-pill" onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
-        <a href="#bio" className="nav-pill" onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
-        <a href="#apoyo" className="nav-pill" onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
-        <a href="#escribeme" className="nav-pill" onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
-        <a href="/index.html" className="nav-pill portfolio-link">← Portafolio</a>
+        <button onClick={onCloseBook} className="nav-pill">Portada</button> {/* Este botón cierra el libro, no tiene estado activo */}
+        <a href="#indice" className={`nav-pill ${currentPage === 'index' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'index')}>Índice</a>
+        <a href="#bio" className={`nav-pill ${currentPage === 'bio' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'bio')}>Autobiografía</a>
+        <a href="#apoyo" className={`nav-pill ${currentPage === 'apoyo' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'apoyo')}>Apóyame</a>
+        <a href="#escribeme" className={`nav-pill ${currentPage === 'escribeme' ? 'active' : ''}`} onClick={(e) => handleLinkClick(e, 'escribeme')}>Escríbeme</a>
       </footer>
     </>
   );

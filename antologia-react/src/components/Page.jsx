@@ -1,10 +1,12 @@
 // src/components/Page.jsx
 import React from 'react';
+import SafePhoneNumber from './SafePhoneNumber';
 
 function Page({
   title,
   content,
   isActive,
+  pageClass,
   pageNumber,
   totalPages,
   onNavigatePrevious,
@@ -13,7 +15,7 @@ function Page({
   specialContent
 }) {
   // La clase "active" es importante para que el CSS lo muestre.
-  const className = `page ${isActive ? 'active' : ''}`;
+  const className = `page ${isActive ? 'active' : ''} ${pageClass || ''}`;
 
   return (
     <section className={className}>
@@ -22,9 +24,30 @@ function Page({
         {/* Renderizamos el poema como un solo bloque de texto,
             respetando los saltos de línea y párrafos del array. */}
         <div className="poem-body">
-          {content.map((line, index) => (
-            <p key={index}>{line || '\u00A0'}</p> // Si la línea está vacía, inserta un espacio para crear el salto de párrafo.
-          ))}
+          {content.map((line, index) => {
+            // Si la línea contiene el marcador, renderizamos el componente seguro.
+            if (typeof line === 'string') {
+              if (line.includes('[BIZUM_NUMBER]')) {
+                const parts = line.split('[BIZUM_NUMBER]');
+                return (
+                  <p key={index}>
+                    {parts[0]}<SafePhoneNumber numberParts={['+34', '641', '868', '620']} />{parts[1]}
+                  </p>
+                );
+              }
+              if (line.includes('[NEQUI_NUMBER]')) {
+                const parts = line.split('[NEQUI_NUMBER]');
+                return (
+                  <p key={index}>
+                    {parts[0]}<SafePhoneNumber numberParts={['+57', '321', '698', '4683']} />{parts[1]}
+                  </p>
+                );
+              }
+            }
+
+            // Si no, renderizamos la línea normalmente.
+            return <p key={index}>{line || '\u00A0'}</p>;
+          })}
           {/* Aquí renderizamos el contenido especial si existe */}
           {specialContent}
         </div>

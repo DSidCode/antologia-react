@@ -208,14 +208,25 @@ export const poemsData = {
   'bio': {
     title: 'Autobiografía',
     content: [
-      'Aquí aparecerá la autobiografía del autor.'
+      'El Alquimista de Zafiro',
+      '',
+      'Mi alma tiene el aroma de café recién tostado y la cadencia suave de un adiós en la montaña. Nací en Manizales, la "Fábrica de Atardeceres", ese lienzo perpetuo que Pablo Neruda tuvo el acierto de bautizar. Mi patria chica, con sus puertas abiertas y su geografía imponente, sembró en mí, desde niño, una sutil fascinación por el trazo y la palabra.',
+      'Recuerdo la biblioteca de casa, pequeña pero sustanciosa, un cofre de tesoros de papel. Pero fue la imagen de mis padres, con sus cartas y textos, y sobre todo la letra preciosa y perfecta de mi madre, lo que encendió la chispa. El deseo de leerlo todo, de escribirlo todo, se convirtió en una necesidad vital.',
+      'El verdadero desborde llegó en la infancia, cuando Eli (Elizabeth Castro Orozco, o ECO), mi mejor amiga, me confió la intimidad de su diario. Ver plasmado ese tesoro de pensamientos y sentimientos ajenos fue una revelación, un espejo que me permitió enfrentar mis propias angustias. Desde ese momento, en mis libretas y diarios, comencé a tener las mil y una conversaciones internas que me habitan.',
+      'Hoy, desde Madrid, España, mantengo la misma urgencia de entonces: convertir lo intangible en materia palpable. Me he bautizado a mí mismo como el Alquimista de Zafiro, no porque busque el oro, sino porque mi misión es transformar el pensamiento líquido y volátil en una joya sólida: la palabra.',
+      'Por fin, me he puesto en la tarea de sacar al mundo esta alma hecha letras y versos. Así que, querido lector, al sumergirse en esta antología, confío en que sienta un poco del inmenso placer que experimento al dibujar mundos e intensidades a través de la palabra escrita por mis manos y mi corazón. Que este encuentro sea tan íntimo como aquel diario compartido en la infancia.',
+      '',
+      'Si deseas explorar más de mi trabajo, mis proyectos de desarrollo o simplemente conectar, te invito a visitar mi espacio personal en la web.'
     ]
+    , specialContent: 'authorLink'
   },
   'apoyo': {
     title: 'Apoya al autor',
     content: [
       'Si te gusta el contenido que creo, puedes mostrar tu apoyo a través de una pequeña contribución económica.',
-      'Tu ayuda me permite seguir escribiendo, explorando nuevas ideas y compartiendo mi arte contigo.'
+      'Tu ayuda me permite seguir escribiendo, explorando nuevas ideas y compartiendo mi arte contigo.',
+      'Para aportes directos, puedes enviarme un Bizum a mi número personal: [BIZUM_NUMBER].',
+      'También puedes hacerlo a mi Nequi (Colombia): [NEQUI_NUMBER]. ¡Gracias por tu apoyo!'
     ],
     specialContent: 'donationButtons' // Indicador para contenido especial
   },

@@ -4,6 +4,44 @@ Este documento registra todos los cambios significativos realizados en el proyec
 
 ---
 
+## [v2.5.0] - Refactorización de Componentes y Mejoras de Usabilidad
+
+### `Added`
+- **Estado Activo en Navegación**: Se implementó un indicador visual (`.active`) en los menús de navegación del libro para resaltar la página que el lector está viendo actualmente, mejorando la orientación.
+- **Enlace de Autor Contextual**: Se creó el componente `AuthorLink` para mostrar un enlace estilizado al portafolio del autor (`danisid.com`) de forma orgánica dentro de la página de la autobiografía.
+
+### `Changed`
+- **Refactorización a Componente Reutilizable**: Se refactorizaron los componentes duplicados `SafeBizumNumber` y `SafeNequiNumber` en un único componente `SafePhoneNumber`, siguiendo el principio DRY (Don't Repeat Yourself) y mejorando la mantenibilidad.
+- **Mejora de la Experiencia de Autor**: Se eliminó el enlace "Portafolio" de los menús de navegación principales para una experiencia de lectura más inmersiva.
+- **Estilo Cyberpunk**: Se aplicó un efecto de "neón cyberpunk" al enlace del autor, dándole una identidad visual única.
+- **Diagramación Profesional**: Se mejoró la presentación del texto en la página de la autobiografía, desactivando la separación de palabras con guiones (`hyphens: none`) y usando alineación a la izquierda para una apariencia más limpia y profesional.
+
+### `Fixed`
+- **Error de Sintaxis JSX**: Se corrigió un error de token inesperado (`>>`) en el componente `AuthorLink` utilizando la entidad HTML correcta (`&gt;&gt;`).
+- **Bug de Renderizado de Componente**: Se solucionó un error lógico en `Book.jsx` que impedía que el componente `AuthorLink` se mostrara en la página de la autobiografía.
+
+---
+
+## [v2.4.0] - Integración de Donaciones y Mejoras de Seguridad
+
+### `Added`
+- **Pasarela de Donaciones**: Se implementó una sección completa para que los lectores puedan apoyar al autor, incluyendo:
+    - **PayPal**: Enlace directo a `paypal.me`.
+    - **Bizum y Nequi**: Se muestran los números de teléfono para transferencias directas.
+    - **Modal con Código QR**: Se añadió una ventana modal moderna y flotante que muestra un código QR para facilitar las donaciones a través de Nequi.
+- **Ofuscación de Números de Teléfono**: Se crearon los componentes `SafeBizumNumber.jsx` y `SafeNequiNumber.jsx` para renderizar los números de teléfono en el lado del cliente, protegiéndolos de bots de spam y rastreadores.
+
+### `Fixed`
+- **Ruta del Favicon**: Se corrigió la ruta del favicon en `index.html` para que apunte al archivo correcto dentro de `src/assets/img`.
+- **Error Crítico de Renderizado**: Se solucionó un bug en el componente `DonationButtons.jsx` causado por una incorrecta implementación del hook `useState`, que impedía que la aplicación se renderizara.
+
+### `Changed`
+- **Componente `Page.jsx`**: Se actualizó para detectar y renderizar dinámicamente los componentes de ofuscación de números de teléfono.
+- **Componente `DonationButtons.jsx`**: Se refactorizó para incluir la lógica de la ventana modal del código QR de Nequi.
+- **CSS**: Se añadieron nuevos estilos en `style.css` para la ventana modal, asegurando un diseño responsivo y moderno.
+
+---
+
 ## [v2.2.0] - Refinamiento de UI y Funcionalidad de Lectura
 
 ### `Added`
@@ -25,6 +63,20 @@ Este documento registra todos los cambios significativos realizados en el proyec
 - **Layout de Portada**: Se corrigió una regresión que había roto el diseño de la portada, asegurando que se muestre correctamente centrada y a pantalla completa.
 - **Error de Despliegue en Netlify**: Se solucionó un error de build (`ENOENT: no such file or directory`) al configurar el `base directory` en Netlify para que apunte al subdirectorio `antologia-react`, donde reside el proyecto.
 
+---
+
+## [v2.3.0] - Implementación de Componentes de Interacción y Mejoras de Build
+
+### `Added`
+- **Componente de Donaciones**: Se creó el componente `DonationButtons.jsx` para mostrar las opciones de apoyo al autor (PayPal, Bizum, Nequi).
+- **Logos SVG Personalizados**: Se añadieron los archivos SVG de los logos de las plataformas de pago a la carpeta `src/assets/img`.
+- **Configuración de Alias de Ruta**: Se configuró un alias de ruta (`@/`) en `vite.config.js` que apunta al directorio `src/`, simplificando y robusteciendo las importaciones de módulos en todo el proyecto.
+
+### `Changed`
+- **Botones de Apoyo**: Se refactorizó la implementación de los botones de donación para utilizar los nuevos logos SVG importados, en lugar de iconos genéricos o de librerías externas.
+
+### `Fixed`
+- **Error de Importación de Assets**: Se solucionó un error de build (`Failed to resolve import`) que ocurría al intentar importar los archivos SVG. La configuración del alias de ruta en Vite resolvió el problema de forma definitiva.
 ---
 
 ## [v2.1.0] - Implementación del Libro Interactivo y Correcciones de Layout
@@ -79,19 +131,4 @@ Este documento registra todos los cambios significativos realizados en el proyec
 - **Diseño Responsivo**:
     - **Vista Móvil**: Se transformó el layout para que funcione como una página web con scroll natural, eliminando por completo los problemas de superposición.
 
-    ## [v2.3.0] - Implementación de Componentes de Interacción y Mejoras de Build
-
-### `Added`
-- **Componente de Donaciones**: Se creó el componente `DonationButtons.jsx` para mostrar las opciones de apoyo al autor (PayPal, Bizum, Nequi).
-- **Logos SVG Personalizados**: Se añadieron los archivos SVG de los logos de las plataformas de pago a la carpeta `src/assets/img`.
-- **Configuración de Alias de Ruta**: Se configuró un alias de ruta (`@/`) en `vite.config.js` que apunta al directorio `src/`, simplificando y robusteciendo las importaciones de módulos en todo el proyecto.
-
-### `Changed`
-- **Botones de Apoyo**: Se refactorizó la implementación de los botones de donación para utilizar los nuevos logos SVG importados, en lugar de iconos genéricos o de librerías externas.
-
-### `Fixed`
-- **Error de Importación de Assets**: Se solucionó un error crítico de build (`Failed to resolve import`) que ocurría al intentar importar los archivos SVG. La configuración del alias de ruta en Vite resolvió el problema de forma definitiva.
-
 ---
-
-## [v2.2.0] - Refinamiento de UI y Funcionalidad de Lectura

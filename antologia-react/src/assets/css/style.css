@@ -220,6 +220,13 @@ body.book-is-open .book-footer {
 .nav-pill:hover {
     transform: translateY(-2px);
 }
+
+.nav-pill.active {
+    background-color: var(--ink);
+    color: var(--paper);
+    box-shadow: none;
+}
+
 /* Estilo específico para el botón de volver al portafolio */
 .nav-pill.portfolio-link {
     background-color: #f0f0f0;
@@ -417,6 +424,13 @@ header p {
     margin: 0 0 1rem;
     hyphens: auto;
 }
+
+/* Estilos específicos para la página de la autobiografía */
+.page--bio .poem-body p {
+    text-align: left; /* Alineación a la izquierda para un flujo más natural */
+    hyphens: none; /* Desactiva la separación de palabras con guiones */
+}
+
 
 /* Ajuste para los versos dentro de un poema */
 .poem-body p {
@@ -717,3 +731,63 @@ body:not(.book-is-open) footer, body:not(.book-is-open) .actions {
 .footer-link:hover {
     text-decoration: underline;
 }
+
+/* --- Estilos para la Ventana Modal del QR --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.modal-content {
+    background-color: var(--paper);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+    width: 90%;
+    max-width: 320px;
+    transform: scale(0.9);
+    animation: zoomIn 0.3s forwards;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--ink);
+}
+
+.qr-code-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.modal-text {
+    font-family: var(--font-sans);
+    color: #555;
+    font-size: 0.95rem;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zoomIn { from { transform: scale(0.9); } to { transform: scale(1); } }
