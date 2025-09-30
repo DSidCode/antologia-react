@@ -391,10 +391,9 @@ header p {
 }
 
 /* Contenedor del contenido de la página para el scroll */
-.page-content {
+/* .page-content {
     /* Ya no es necesario, el contenedor .page se encarga del scroll */
-}
-
+/*} */
 .page h2 {
     font-size: clamp(1.5rem, 5vw, 1.8rem);
     margin: 0 0 1.25rem;
@@ -491,9 +490,7 @@ header p {
     counter-reset: poem-counter; /* Prepara el contador para la numeración */
 }
 
-.indice-list li {
-    /* No necesitamos margen, el borde del enlace creará la separación */
-}
+/* .indice-list li {} */
 
 .indice-link {
     color: var(--ink);
@@ -579,14 +576,28 @@ header p {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Cambiado de svg a i para los iconos de Font Awesome */
-.icon-btn i {
-    font-size: 24px; /* Se usa font-size para controlar el tamaño de los iconos */
-    transition: var(--transition);
+/* Ahora estilizamos la imagen (IMG) dentro del botón */
+.icon-btn img {
+    width: 24px;  /* Tamaño explícito para SVG */
+    height: 24px; /* Tamaño explícito para SVG */
+    /* Aplicamos la transición a las propiedades que van a cambiar */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.icon-btn:hover i {
-    transform: scale(1.1);
+.icon-btn:hover img {
+    /* Efecto de levitación general para todos los botones */
+    transform: scale(1.1) translateY(-2px);
+}
+
+/* Efecto de brillo (glow) para cada logo en hover */
+.paypal-icon:hover img {
+    filter: drop-shadow(0 0 8px white);
+}
+.bizum-icon:hover img {
+    filter: drop-shadow(0 0 8px white);
+}
+.nequi-icon:hover img {
+    filter: drop-shadow(0 0 8px white);
 }
 
 /* Colores específicos para cada botón */
@@ -621,23 +632,23 @@ header p {
     color: var(--brand-paypal);
     border-color: var(--brand-paypal);
 }
-.icon-btn.paypal-icon:hover { 
-    background-color: var(--brand-paypal);
-    color: white;
-}
+
 
 .icon-btn.bizum-icon { 
     color: var(--brand-bizum);
     border-color: var(--brand-bizum);
 }
-.icon-btn.bizum-icon:hover { 
-    background-color: var(--brand-bizum);
+.icon-btn.paypal-icon:hover { 
+    background-color: var(--brand-paypal);
     color: white;
 }
-
 .icon-btn.nequi-icon { 
     color: var(--brand-nequi);
     border-color: var(--brand-nequi);
+}
+.icon-btn.bizum-icon:hover { 
+    background-color: var(--brand-bizum);
+    color: white;
 }
 .icon-btn.nequi-icon:hover { 
     background-color: var(--brand-nequi);
@@ -653,6 +664,7 @@ header p {
     color: white;
 }
 
+
 .icon-btn.email-icon { 
     color: var(--brand-email);
     border-color: var(--brand-email);
@@ -661,6 +673,8 @@ header p {
     background-color: var(--brand-email);
     color: white;
 }
+
+
 
 
 /* Footer */

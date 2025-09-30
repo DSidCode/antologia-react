@@ -9,7 +9,8 @@ function Page({
   totalPages,
   onNavigatePrevious,
   onNavigateNext,
-  isFirstPoem
+  isFirstPoem,
+  specialContent
 }) {
   // La clase "active" es importante para que el CSS lo muestre.
   const className = `page ${isActive ? 'active' : ''}`;
@@ -24,6 +25,8 @@ function Page({
           {content.map((line, index) => (
             <p key={index}>{line || '\u00A0'}</p> // Si la línea está vacía, inserta un espacio para crear el salto de párrafo.
           ))}
+          {/* Aquí renderizamos el contenido especial si existe */}
+          {specialContent}
         </div>
       </div>
       <div className="pager">

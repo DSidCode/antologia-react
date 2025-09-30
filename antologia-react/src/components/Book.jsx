@@ -2,6 +2,8 @@ import { useEffect, useCallback } from 'react';
 import Index from './Index.jsx';
 import Page from './Page.jsx';
 import { poems } from './poems.js';
+import DonationButtons from './DonationButtons.jsx';
+import ContactButtons from './ContactButtons.jsx';
 
 function Book({ onCloseBook, currentPage, setCurrentPage }) {
   const poemIds = poems.map(p => p.id);
@@ -70,6 +72,12 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
         {/* Renderizamos una página para cada poema */}
         {poems.map((poem, index) => { // poems ahora incluye las nuevas secciones
           const isLastPoem = index === totalPages - 1;
+          let specialContentComponent = null;
+          if (poem.specialContent === 'donationButtons') {
+            specialContentComponent = <DonationButtons />;
+          } else if (poem.specialContent === 'contactButtons') {
+            specialContentComponent = <ContactButtons />;
+          }
           return (
             <Page
               key={poem.id}
@@ -81,6 +89,7 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
               onNavigatePrevious={handlePrevious}
               onNavigateNext={!isLastPoem ? handleNext : null}
               isFirstPoem={index === 0}
+              specialContent={specialContentComponent}
             />
           );
         })}

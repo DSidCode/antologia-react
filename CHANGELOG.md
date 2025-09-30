@@ -78,3 +78,20 @@ Este documento registra todos los cambios significativos realizados en el proyec
 - **Estilos**: Se unificó el diseño de menús con botones flotantes y fondo transparente a todas las versiones (móvil y escritorio).
 - **Diseño Responsivo**:
     - **Vista Móvil**: Se transformó el layout para que funcione como una página web con scroll natural, eliminando por completo los problemas de superposición.
+
+    ## [v2.3.0] - Implementación de Componentes de Interacción y Mejoras de Build
+
+### `Added`
+- **Componente de Donaciones**: Se creó el componente `DonationButtons.jsx` para mostrar las opciones de apoyo al autor (PayPal, Bizum, Nequi).
+- **Logos SVG Personalizados**: Se añadieron los archivos SVG de los logos de las plataformas de pago a la carpeta `src/assets/img`.
+- **Configuración de Alias de Ruta**: Se configuró un alias de ruta (`@/`) en `vite.config.js` que apunta al directorio `src/`, simplificando y robusteciendo las importaciones de módulos en todo el proyecto.
+
+### `Changed`
+- **Botones de Apoyo**: Se refactorizó la implementación de los botones de donación para utilizar los nuevos logos SVG importados, en lugar de iconos genéricos o de librerías externas.
+
+### `Fixed`
+- **Error de Importación de Assets**: Se solucionó un error crítico de build (`Failed to resolve import`) que ocurría al intentar importar los archivos SVG. La configuración del alias de ruta en Vite resolvió el problema de forma definitiva.
+
+---
+
+## [v2.2.0] - Refinamiento de UI y Funcionalidad de Lectura

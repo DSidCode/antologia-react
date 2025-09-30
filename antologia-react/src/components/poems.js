@@ -216,13 +216,15 @@ export const poemsData = {
     content: [
       'Si te gusta el contenido que creo, puedes mostrar tu apoyo a través de una pequeña contribución económica.',
       'Tu ayuda me permite seguir escribiendo, explorando nuevas ideas y compartiendo mi arte contigo.'
-    ]
+    ],
+    specialContent: 'donationButtons' // Indicador para contenido especial
   },
   'escribeme': {
     title: 'Escríbeme',
     content: [
       '¿Tienes alguna pregunta, un comentario o simplemente quieres saludar? Me encantaría saber de ti.'
-    ]
+    ],
+    specialContent: 'contactButtons' // Indicador para los botones de contacto
   }
 };
 
