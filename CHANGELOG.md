@@ -4,6 +4,21 @@ Este documento registra todos los cambios significativos realizados en el proyec
 
 ---
 
+## [v2.6.0] - Optimización SEO y para Redes Sociales
+
+### `Added`
+- **Metadatos Open Graph y Twitter Cards**: Se implementaron metadatos SEO en `index.html` para mejorar la previsualización de la antología al ser compartida en redes sociales como LinkedIn, Facebook y Twitter.
+- **Configuración de Imagen de Portada Social**: Se especificó una imagen de portada (`og:image` y `twitter:image`) con las dimensiones recomendadas (1200x630px) para asegurar una presentación visual atractiva.
+
+### `Changed`
+- **URL Canónica**: Se estableció la URL canónica del sitio (`https://antologia.danisid.com`) en los metadatos para consolidar el SEO.
+- **Rutas de Assets Públicos**: Se clarificó la gestión de assets para redes sociales, asegurando que la imagen de portada resida en la carpeta `public` para garantizar su accesibilidad a través de una URL pública.
+
+### `Fixed`
+- **Consistencia de Metadatos**: Se corrigió y unificó la ruta de la imagen para Twitter (`twitter:image`) para que fuera consistente con la de Open Graph (`og:image`), apuntando a la URL pública correcta.
+
+---
+
 ## [v2.5.0] - Refactorización de Componentes y Mejoras de Usabilidad
 
 ### `Added`
