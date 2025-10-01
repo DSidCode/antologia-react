@@ -1,5 +1,6 @@
 // src/components/DonationButtons.jsx
 import React, { useState } from 'react';
+import SafePhoneNumber from './SafePhoneNumber'; // Importamos el componente para el número seguro
 
 // Importamos los logos SVG desde la carpeta de assets.
 // Usamos el alias '@' que apunta a la carpeta 'src' para evitar errores con rutas relativas.
@@ -10,6 +11,7 @@ import nequiQR from '@/assets/img/QRNequi.webp'; // Importamos la imagen del QR
 
 function DonationButtons() {
   const [isNequiModalOpen, setNequiModalOpen] = useState(false);
+  const [isBizumModalOpen, setBizumModalOpen] = useState(false);
 
   return (
     <div className="action-buttons" style={{ marginTop: '2rem', justifyContent: 'center' }}>
@@ -23,15 +25,13 @@ function DonationButtons() {
       >
         <img src={paypalLogo} alt="Logo de PayPal" />
       </a>
-      <a
+      <button
         className="icon-btn bizum-icon"
-        title="Donar con Bizum (ver número en la página)"
-        href="#bizum"
-        onClick={(e) => e.preventDefault()} // Evita que el enlace navegue
-        style={{ cursor: 'default' }} // Cambia el cursor para indicar que no es un enlace activo
-        aria-label="Donar con Bizum (ver número en la página)">
+        title="Donar con Bizum"
+        onClick={() => setBizumModalOpen(true)}
+        aria-label="Donar con Bizum">
         <img src={bizumLogo} alt="Logo de Bizum" />
-      </a>
+      </button>
       <button
         className="icon-btn nequi-icon"
         title="Donar con Nequi (Mostrar QR)"
@@ -48,6 +48,20 @@ function DonationButtons() {
             </button>
             <img src={nequiQR} alt="Código QR para donar con Nequi" className="qr-code-image" />
             <p className="modal-text">Escanea el código para donar con Nequi</p>
+          </div>
+        </div>
+      )}
+
+      {isBizumModalOpen && (
+        <div className="modal-overlay" onClick={() => setBizumModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setBizumModalOpen(false)} aria-label="Cerrar modal">
+              &times;
+            </button>
+            <p className="modal-text">
+              Puedes enviarme un Bizum al número: <br />
+              <SafePhoneNumber numberParts={['641', '868', '620']} />
+            </p>
           </div>
         </div>
       )}

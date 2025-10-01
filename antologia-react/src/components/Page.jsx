@@ -5,8 +5,7 @@ import SafePhoneNumber from './SafePhoneNumber';
 function Page({
   title,
   content,
-  isActive,
-  pageClass,
+  isActive,  
   pageNumber,
   totalPages,
   onNavigatePrevious,
@@ -15,7 +14,7 @@ function Page({
   specialContent
 }) {
   // La clase "active" es importante para que el CSS lo muestre.
-  const className = `page ${isActive ? 'active' : ''} ${pageClass || ''}`;
+  const className = `page ${isActive ? 'active' : ''}`;
 
   return (
     <section className={className}>
@@ -31,7 +30,7 @@ function Page({
                 const parts = line.split('[BIZUM_NUMBER]');
                 return (
                   <p key={index}>
-                    {parts[0]}<SafePhoneNumber numberParts={['+34', '641', '868', '620']} />{parts[1]}
+                    {parts[0]}<SafePhoneNumber numberParts={['641', '868', '620']} />{parts[1]}
                   </p>
                 );
               }
@@ -39,7 +38,7 @@ function Page({
                 const parts = line.split('[NEQUI_NUMBER]');
                 return (
                   <p key={index}>
-                    {parts[0]}<SafePhoneNumber numberParts={['+57', '321', '698', '4683']} />{parts[1]}
+                    {parts[0]}<SafePhoneNumber numberParts={['321', '698', '4683']} />{parts[1]}
                   </p>
                 );
               }

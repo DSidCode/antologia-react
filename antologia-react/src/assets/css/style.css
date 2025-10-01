@@ -425,17 +425,13 @@ header p {
     hyphens: auto;
 }
 
-/* Estilos específicos para la página de la autobiografía */
-.page--bio .poem-body p {
-    text-align: left; /* Alineación a la izquierda para un flujo más natural */
-    hyphens: none; /* Desactiva la separación de palabras con guiones */
-}
-
-
-/* Ajuste para los versos dentro de un poema */
+/* Estilos para todo el contenido (poemas y textos) para una diagramación profesional */
 .poem-body p {
     margin-bottom: 0.25rem; /* Reduce el espacio entre versos */
-    text-align: left; /* La poesía suele leerse mejor alineada a la izquierda */
+    /* La poesía y los textos largos se leen mejor alineados a la izquierda,
+       sin partición de palabras, para una apariencia limpia y profesional. */
+    text-align: left;
+    hyphens: none;
 }
 
 /* Espacio al final del poema para que "respire" */
@@ -590,17 +586,20 @@ header p {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Ahora estilizamos la imagen (IMG) dentro del botón */
-/* Estilos para los iconos (sean IMG o I) dentro del botón */
-.icon-btn img,
-.icon-btn i {
-    /* Para los SVG */
-    width: 24px;
-    height: 24px;
-    /* Para los iconos de fuente */
-    font-size: 24px;
-    line-height: 1;
-    /* Aplicamos la transición a las propiedades que van a cambiar */
+/* Aseguramos que los iconos (Remix Icon) tengan tamaño, color y alineación */
+.icon-btn i[class^="ri-"] {
+    font-size: 28px; /* Tamaño explícito para el icono */
+    line-height: 1; /* Asegura que no haya espacio extra vertical */
+    display: flex; /* Permite centrar el icono */
+    align-items: center; /* Centrado vertical */
+    color: inherit; /* Hereda el color del elemento padre */
+    transition: color 0.3s ease;
+}
+
+/* Estilos para los iconos que son imágenes (SVG de donaciones) */
+.icon-btn img {
+    width: 28px; /* Tamaño consistente con los iconos de fuente */
+    height: 28px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -664,23 +663,23 @@ header p {
     color: var(--brand-paypal);
     border-color: var(--brand-paypal);
 }
-
+.icon-btn.paypal-icon:hover { 
+    background-color: var(--brand-paypal);
+    color: white;
+}
 
 .icon-btn.bizum-icon { 
     color: var(--brand-bizum);
     border-color: var(--brand-bizum);
 }
-.icon-btn.paypal-icon:hover { 
-    background-color: var(--brand-paypal);
-    color: white;
-}
-.icon-btn.nequi-icon { 
-    color: var(--brand-nequi);
-    border-color: var(--brand-nequi);
-}
 .icon-btn.bizum-icon:hover { 
     background-color: var(--brand-bizum);
     color: white;
+}
+
+.icon-btn.nequi-icon { 
+    color: var(--brand-nequi);
+    border-color: var(--brand-nequi);
 }
 .icon-btn.nequi-icon:hover { 
     background-color: var(--brand-nequi);
@@ -695,7 +694,6 @@ header p {
     background-color: var(--brand-whatsapp);
     color: white;
 }
-
 
 .icon-btn.email-icon { 
     color: var(--brand-email);
@@ -786,6 +784,7 @@ body:not(.book-is-open) footer, body:not(.book-is-open) .actions {
 .modal-text {
     font-family: var(--font-sans);
     color: #555;
+    text-align: left;
     font-size: 0.95rem;
 }
 

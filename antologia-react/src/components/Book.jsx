@@ -81,13 +81,13 @@ function Book({ onCloseBook, currentPage, setCurrentPage }) {
           } else if (poem.specialContent === 'authorLink') {
             specialContentComponent = <AuthorLink />;
           }
+
           return (
             <Page
               key={poem.id}
               isActive={currentPage === poem.id}
               title={poem.title}
               content={poem.content}
-              pageClass={poem.id === 'bio' ? 'page--bio' : ''}
               pageNumber={index + 1}
               totalPages={totalPages}
               onNavigatePrevious={handlePrevious}

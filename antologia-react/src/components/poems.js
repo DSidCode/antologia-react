@@ -35,7 +35,7 @@ export const poemsData = {
       'aquellas que tantas veces he buscado en otras manos tan torpes y de buenas intenciones',
       'que a duras penas si llego a entender que es una caricia.',
       '',
-      'Ella no, ella lo hace con el alma y sabe llegar hasta la mía y como diría Oliverio Gironda,',
+      'Ella no, ella lo hace con el alma y sabe llegar hasta la mía y como diría Oliverio Girondo,',
       'después de conocer una mujer etérea,',
       '¿puede brindarnos alguna clase de atractivos una mujer terrestre?'
     ]
@@ -223,10 +223,11 @@ export const poemsData = {
   'apoyo': {
     title: 'Apoya al autor',
     content: [
-      'Si te gusta el contenido que creo, puedes mostrar tu apoyo a través de una pequeña contribución económica.',
-      'Tu ayuda me permite seguir escribiendo, explorando nuevas ideas y compartiendo mi arte contigo.',
-      'Para aportes directos, puedes enviarme un Bizum a mi número personal: [BIZUM_NUMBER].',
-      'También puedes hacerlo a mi Nequi (Colombia): [NEQUI_NUMBER]. ¡Gracias por tu apoyo!'
+      'Si has disfrutado de estos versos y deseas apoyar mi trabajo, puedes hacerlo a través de una pequeña contribución. Tu generosidad me permite seguir dedicando tiempo a la escritura y a la creación de nuevos proyectos.',
+      '',
+      'Para aportes desde España, puedes enviarme un Bizum al número: [BIZUM_NUMBER].',
+      'Para aportes desde Colombia, puedes usar Nequi en el número: [NEQUI_NUMBER].',
+      '¡Muchas gracias por tu apoyo!'
     ],
     specialContent: 'donationButtons' // Indicador para contenido especial
   },
