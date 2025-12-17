@@ -205,6 +205,40 @@ export const poemsData = {
       'y en la memoria viva de lo que fuimos.'
     ]
   },
+  'poema-6': {
+    title: 'La luz del lado oscuro',
+    content: [
+      'A veces es necesario habitar',
+      'el lado oscuro de la luna,',
+      'no como huida,',
+      'sino como pausa.',
+      '',
+      'Permanecer ahí,',
+      'contemplando la soledad',
+      'y la serena sensación',
+      'de escuchar, a fondo,',
+      'el propio diálogo interno.',
+      '',
+      '[ILUSTRACION]', // Marcador para la ilustración
+      '',
+      'Dejar fluir las interminables charlas mentales,',
+      'las curiosidades científicas, filosóficas y emocionales',
+      'que me acompañan a cada instante.',
+      '',
+      'Amo existir',
+      'y sentir en profundidad,',
+      'sin resistencia.',
+      '',
+      'Disfrutar el tiempo',
+      'mientras pasa,',
+      'aceptar su ritmo',
+      'y descubrir que, en esa entrega,',
+      'la vida se vuelve deliciosa.'
+    ],
+    date: '16 de Diciembre de 2025',
+    place: 'Madrid-España',
+    illustration: '/img/ilustraciones/lado-oscuro.jpg' // Ruta a la imagen
+  },
   'bio': {
     title: 'Autobiografía',
     content: [
